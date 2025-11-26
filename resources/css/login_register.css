@@ -13,9 +13,6 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    /* background: linear-gradient(90deg, #e2e2e2, #c9d6ff); */
-    /* background: #ededed; */
-    /* background: radial-gradient(circle, rgba(237, 237, 237, 1) 0%, rgba(255, 171, 47, 0.56) 100%); */
 }
 
 .wave {
@@ -50,11 +47,13 @@ body {
   background: rgba(20, 20, 20, 0.5);
   animation: animate 10s linear infinite;
 }
+
 .wave span:nth-child(3) {
   border-radius: 42.5%;
   background: rgba(20, 20, 20, 0.5);
   animation: animate 15s linear infinite;
 }
+
 @keyframes animate {
   0% {
     transform: translate(-50%, -75%) rotate(0deg);
@@ -238,13 +237,6 @@ form {
     margin-bottom: 20px;
 }
 
-/* .toggle-panel .btn {
-    width: 160px;
-    height: 46px;
-    background: #F59300;
-    box-shadow: none;
-} */
-
 .toggle-panel .btn {
     width: 160px;
     height: 46px;
@@ -266,7 +258,7 @@ form {
     user-select: none;
 }
 
-.alert-error {
+.alert-error, .alert-success {
     text-align: center;
     font-size: 14px;
     border-radius: 6px;
@@ -274,21 +266,314 @@ form {
     margin-bottom: 12px;
     font-weight: 500;
     animation: fadeIn 0.3s ease-in-out;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 90%;
+}
+
+.alert-error {
     background-color: #ffe6e6;
     color: #b71c1c;
     border: 1px solid #f5c6cb;
-    position: absolute;
-    top: 10px;
 }
 
-/* Animasi lembut saat muncul */
+.alert-success {
+    background-color: #e6ffe6;
+    color: #1c7b1c;
+    border: 1px solid #c6f5cb;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-5px);
+        transform: translate(-50%, -5px);
     }
     to {
         opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet - Layar Medium (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 700px;
+        height: 500px;
+    }
+    
+    .container h1 {
+        font-size: 32px;
+    }
+    
+    .form-box {
+        padding: 30px;
+    }
+    
+    .input-box {
+        margin: 25px 0;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container {
+        width: 90%;
+        max-width: 600px;
+        height: 480px;
+    }
+    
+    .container h1 {
+        font-size: 28px;
+    }
+    
+    .form-box {
+        padding: 25px;
+    }
+}
+
+/* Mobile - Layar Kecil (max-width: 768px) */
+/* Animasi berubah dari horizontal ke vertikal */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        min-height: 600px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Form Box - Full width, positioned relatively */
+    .form-box {
+        position: relative;
+        right: auto;
+        width: 100%;
+        height: auto;
+        padding: 30px 25px;
+        transition: transform 0.8s ease-in-out;
+        order: 1;
+    }
+    
+    .form-box.login {
         transform: translateY(0);
+    }
+    
+    .form-box.register {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        visibility: visible;
+        z-index: 0;
+    }
+    
+    /* Active state - Register slide up from bottom */
+    .container.active .form-box.login {
+        transform: translateY(-100%);
+    }
+    
+    .container.active .form-box.register {
+        transform: translateY(0);
+        z-index: 1;
+    }
+    
+    .container h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    
+    .input-box {
+        margin: 20px 0;
+    }
+    
+    .input-box input {
+        padding: 12px 45px 12px 18px;
+        font-size: 15px;
+    }
+    
+    .input-box i {
+        right: 15px;
+        font-size: 18px;
+    }
+    
+    .btn {
+        height: 46px;
+        font-size: 15px;
+    }
+    
+    .remember-box {
+        margin-top: -5px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .remember-box label {
+        font-size: 13px !important;
+    }
+    
+    /* Toggle Box - Remove the circular background */
+    .toggle-box {
+        position: relative;
+        height: auto;
+        order: 2;
+    }
+    
+    .toggle-box::before {
+        display: none;
+    }
+    
+    /* Toggle Panel - Always visible, positioned at top or bottom */
+    .toggle-panel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 30px 25px;
+        background: #FFAB2F;
+        border-radius: 0;
+        transition: transform 0.8s ease-in-out;
+    }
+    
+    /* Default: Login form top, Sign Up button bottom */
+    .toggle-panel.toggle-left {
+        left: auto;
+        transform: translateY(0);
+        order: 2;
+    }
+    
+    /* Sign In button starts from top (hidden above) */
+    .toggle-panel.toggle-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: auto;
+        width: 100%;
+        transform: translateY(-100%);
+        order: 0;
+    }
+    
+    /* Active: Register form top, Sign In button bottom */
+    .container.active .toggle-panel.toggle-left {
+        left: auto;
+        transform: translateY(100%);
+    }
+    
+    .container.active .toggle-panel.toggle-right {
+        right: auto;
+        transform: translateY(0);
+    }
+    
+    /* Round only top or bottom corners based on position */
+    .toggle-panel.toggle-left {
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .toggle-panel.toggle-right {
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .toggle-panel h1 {
+        font-size: 26px;
+    }
+    
+    .toggle-panel p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .toggle-panel .btn {
+        width: 140px;
+        height: 44px;
+        font-size: 15px;
+    }
+    
+    .alert-error, .alert-success {
+        font-size: 13px;
+        padding: 8px 12px;
+        max-width: 85%;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .container {
+        max-width: 100%;
+        min-height: 550px;
+        margin: 10px;
+    }
+    
+    .form-box {
+        padding: 25px 20px;
+        min-height: 420px;
+    }
+    
+    .container h1 {
+        font-size: 26px;
+    }
+    
+    .input-box {
+        margin: 18px 0;
+    }
+    
+    .input-box input {
+        padding: 11px 40px 11px 16px;
+        font-size: 14px;
+    }
+    
+    .btn {
+        height: 44px;
+        font-size: 14px;
+    }
+    
+    .toggle-panel {
+        padding: 25px 20px;
+    }
+    
+    .toggle-panel h1 {
+        font-size: 24px;
+    }
+    
+    .toggle-panel p {
+        font-size: 13px;
+    }
+    
+    .toggle-panel .btn {
+        width: 130px;
+        height: 42px;
+        font-size: 14px;
+    }
+}
+
+/* Landscape mode untuk mobile */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .container {
+        margin: 10px;
+        min-height: auto;
+    }
+    
+    .form-box {
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .container h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    
+    .input-box {
+        margin: 12px 0;
+    }
+    
+    .toggle-panel {
+        padding: 20px;
     }
 }

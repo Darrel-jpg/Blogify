@@ -5,8 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\AdminUserController;
 
 // Route::get('/', function () {
 //     return view('home');
@@ -43,6 +44,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::post('/users', [AdminUserController::class, 'store'])->name('users.store');
         Route::post('/users/{user:id}/update', [AdminUserController::class, 'update'])->name('users.update');
         Route::delete('/users/{user:id}', [AdminUserController::class, 'destroy'])->name('users.delete');
+
+        Route::delete('/categories/{category:id}', [CategoryController::class, 'destroy'])->name('categories.delete');
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');

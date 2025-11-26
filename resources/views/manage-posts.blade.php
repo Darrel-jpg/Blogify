@@ -22,7 +22,8 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-sm p-4">
+            <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition"
+                data-modal-target="categoriesModal" data-modal-toggle="categoriesModal">
                 <div class="flex items-center">
                     <div class="shrink-0 bg-green-100 rounded-lg p-3">
                         <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,6 +34,7 @@
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-600">Total Categories</p>
                         <p class="text-2xl font-bold text-gray-900">{{ $categories->count() }}</p>
+                        <p class="text-xs text-[#FF9D0A] mt-1">Click to manage →</p>
                     </div>
                 </div>
             </div>
@@ -48,16 +50,16 @@
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-600">Total Authors</p>
                         <p class="text-2xl font-bold text-gray-900">{{ $totalAuthors }}</p>
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Filter & Search -->
         <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
             <form method="GET" action="{{ route('admin.posts') }}" class="flex flex-wrap gap-4">
                 <div class="flex-1 min-w-[200px]">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search title post..."
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search title post..." autocomplete="off"
                         class="w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFAB2F] focus:border-transparent">
                 </div>
 
@@ -89,6 +91,7 @@
                 @endif
             </form>
         </div>
+
         <!-- Posts Table -->
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
             <div class="overflow-x-auto">
@@ -186,26 +189,96 @@
             </div>
         </div>
     </div>
-    <!-- Delete modal -->
+
+    <!-- Categories Management Modal -->
+    <div id="categoriesModal" tabindex="-1" aria-hidden="true" data-modal-backdrop="static"
+        data-backdrop-classes="bg-gray-900 bg-opacity-80 fixed inset-0 z-40"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-4xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Manage Categories
+                    </h3>
+                    <button type="button" data-modal-toggle="categoriesModal"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                        <svg class="w-3 h-3" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3">Category Name</th>
+                                    <th class="px-6 py-3">Slug</th>
+                                    <th class="px-6 py-3">Color</th>
+                                    <th class="px-6 py-3">Posts</th>
+                                    <th class="px-6 py-3">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($categories as $category)
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">
+                                            {{ $category->name }}
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                                            {{ $category->slug }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-3 py-1 text-xs font-semibold rounded-lg bg-{{ $category->color }}-100 text-{{ $category->color }}-800">
+                                                {{ ucfirst($category->color) }}
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500">
+                                            {{ $category->posts->count() }} posts
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <button type="button"
+                                                class="text-red-600 hover:text-red-800 delete-category-btn"
+                                                data-category-id="{{ $category->id }}"
+                                                data-category-name="{{ $category->name }}"
+                                                data-category-posts="{{ $category->posts->count() }}"
+                                                data-modal-target="deleteModal" data-modal-toggle="deleteModal">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal -->
     <div id="deleteModal" tabindex="-1" aria-hidden="true" data-modal-backdrop="static"
         data-backdrop-classes="bg-gray-900 bg-opacity-90 fixed inset-0 z-40"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
-            <!-- Modal content -->
             <div class="relative p-4 text-center bg-white rounded-lg shadow sm:p-5">
                 <button type="button"
                     class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                     data-modal-toggle="deleteModal">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="sr-only">Close modal</span>
                 </button>
-                <svg class="text-gray-400 w-11 h-11 mb-3.5 mx-auto" aria-hidden="true" fill="currentColor"
-                    viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <svg class="text-gray-400 w-11 h-11 mb-3.5 mx-auto" fill="currentColor" viewbox="0 0 20 20">
                     <path fill-rule="evenodd"
                         d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                         clip-rule="evenodd" />
@@ -231,13 +304,58 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const deleteButtons = document.querySelectorAll('.delete-post-btn');
+            const deleteModal = document.getElementById('deleteModal');
             const deleteForm = document.getElementById('deletePostForm');
+            const deleteMessage = deleteModal.querySelector('.mb-4.text-gray-500');
+            const deleteWarning = deleteModal.querySelector('.mb-4.text-sm.text-gray-400');
+            const categoriesModal = document.getElementById('categoriesModal');
 
-            deleteButtons.forEach(button => {
+            // Delete Post
+            const deletePostButtons = document.querySelectorAll('.delete-post-btn');
+            deletePostButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const postId = this.getAttribute('data-post-id');
                     deleteForm.action = `/blog/${postId}`;
+                    deleteMessage.textContent = 'Are you sure you want to delete this post?';
+                    deleteWarning.textContent = 'This action cannot be undone.';
+                });
+            });
+
+            // Delete Category
+            const deleteCategoryButtons = document.querySelectorAll('.delete-category-btn');
+            deleteCategoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category-id');
+                    const categoryName = this.getAttribute('data-category-name');
+                    const categoryPosts = this.getAttribute('data-category-posts');
+
+                    deleteForm.action = `/admin/categories/${categoryId}`;
+                    deleteMessage.textContent =
+                        `Are you sure you want to delete "${categoryName}" category?`;
+
+                    if (categoryPosts > 0) {
+                        deleteWarning.textContent =
+                            `Warning: This category has ${categoryPosts} post(s). This action cannot be undone.`;
+                    } else {
+                        deleteWarning.textContent = 'This action cannot be undone.';
+                    }
+
+                    categoriesModal.classList.add('hidden');
+                    categoriesModal.classList.remove('flex');
+                    deleteModal.classList.remove('hidden');
+                    deleteModal.classList.add('flex');
+                });
+            });
+
+            const closeDeleteButtons = document.querySelectorAll('[data-modal-toggle="deleteModal"]');
+            closeDeleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (deleteForm.action.includes('/admin/categories/')) {
+                        deleteModal.classList.add('hidden');
+                        deleteModal.classList.remove('flex');
+                        categoriesModal.classList.remove('hidden');
+                        categoriesModal.classList.add('flex');
+                    }
                 });
             });
         });

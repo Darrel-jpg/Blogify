@@ -60,6 +60,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->posts()->update(['category_id' => null]);
+        $category->delete();
+        
+        return redirect()->route('admin.posts')->with('success', 'Category deleted successfully!');
     }
 }

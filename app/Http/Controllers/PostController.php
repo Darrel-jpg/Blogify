@@ -128,8 +128,8 @@ class PostController extends Controller
         $categories = Category::all();
 
         if ($isEdit && auth()->user()->role !== 'admin' && $post->author_id !== auth()->id()) {
-    abort(403, 'Unauthorized action.');
-}
+            abort(403, 'Unauthorized action.');
+        }
 
         return view('form-post', compact('title', 'header', 'categories', 'post'));
     }
