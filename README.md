@@ -63,6 +63,12 @@ php artisan serve
   <li>Password: <code>password</code></li>
 </ul>
 
+<p><strong>User Login</strong></p>
+<ul>
+  <li>Username: <code>testuser</code></li>
+  <li>Password: <code>password</code></li>
+</ul>
+
 <hr>
 
 <h2>🚀 Deployment</h2>
