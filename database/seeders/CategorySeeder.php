@@ -14,6 +14,11 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
+            'name' => 'Uncategorized',
+            'slug' => 'uncategorized',
+            'color' => 'blue',
+        ]);
+        Category::create([
             'name' => 'Web Design',
             'slug' => 'web-design',
             'color' => 'cyan',

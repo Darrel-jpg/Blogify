@@ -60,9 +60,26 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->posts()->update(['category_id' => null]);
+        if ($category->slug === 'uncategorized') {
+            return redirect()->back()
+                ->with('error', 'Cannot delete the default category.');
+        }
+
+        $defaultCategory = Category::firstOrCreate(['name' => 'Uncategorized', 'slug' => 'uncategorized', 'color' => 'blue']);
+        $postsCount = $category->posts()->count();
+        
+        if ($postsCount > 0) {
+            $category->posts()->update(['category_id' => $defaultCategory->id]);
+        }
+        
         $category->delete();
         
-        return redirect()->route('admin.posts')->with('success', 'Category deleted successfully!');
+        if ($postsCount > 0) {
+            return redirect()->route('admin.posts')
+                ->with('success', "Category deleted successfully! {$postsCount} post(s) moved to 'Uncategorized'.");
+        } else {
+            return redirect()->route('admin.posts')
+                ->with('success', 'Category deleted successfully!');
+        }
     }
 }

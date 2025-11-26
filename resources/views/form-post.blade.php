@@ -39,44 +39,6 @@
                 <div class="sm:col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Content</label>
                     <div class="bg-gray-50 w-full border border-gray-300 rounded-lg shadow-xs">
-                        <div class="flex items-center justify-between px-3 py-2 border-b border-gray-300">
-                            <div class="flex flex-wrap items-center divide-md sm:divide-x sm:rtl:divide-x-reverse">
-                                <div class="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
-                                    <button type="button"
-                                        class="p-2 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-gray-200">
-                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M7 8v8a5 5 0 1 0 10 0V6.5a3.5 3.5 0 1 0-7 0V15a2 2 0 0 0 4 0V8" />
-                                        </svg>
-                                        <span class="sr-only">Attach file</span>
-                                    </button>
-                                    <button type="button"
-                                        class="p-2 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-gray-200">
-                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M16 18H8l2.5-6 2 4 1.5-2 2 4Zm-1-8.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z" />
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M10 3v4a1 1 0 0 1-1 1H5m14-4v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1ZM8 18h8l-2-4-1.5 2-2-4L8 18Zm7-8.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z" />
-                                        </svg>
-                                        <span class="sr-only">Upload image</span>
-                                    </button>
-                                    <button type="button"
-                                        class="p-2 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-gray-200">
-                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M15 9h.01M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM6.6 13a5.5 5.5 0 0 0 10.81 0H6.6Z" />
-                                        </svg>
-                                        <span class="sr-only">Add emoji</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                         <div class="px-4 py-2 rounded-lg">
                             <textarea id="content" name="content" rows="8"
                                 class="block bg-gray-50 w-full px-0 text-sm text-heading border-0 focus:ring-0 placeholder:text-body"

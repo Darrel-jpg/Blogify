@@ -29,9 +29,6 @@
                                 class="block px-4 py-2 text-sm hover:bg-[#FFAB2F] text-white">Profile</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-[#FFAB2F] text-white">Settings</a>
-                        </li>
-                        <li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit"

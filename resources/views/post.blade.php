@@ -148,19 +148,13 @@
             const closeButtons = document.querySelectorAll('[data-modal-toggle="deleteModal"]');
 
             if (deleteBtn) {
-                // Open modal
                 deleteBtn.addEventListener('click', function() {
                     const postId = this.getAttribute('data-post-id');
-
-                    // Set form action
                     deleteForm.action = `/blog/${postId}`;
-
-                    // Show modal
                     deleteModal.classList.remove('hidden');
                     deleteModal.classList.add('flex');
                 });
 
-                // Close modal
                 closeButtons.forEach(button => {
                     button.addEventListener('click', function() {
                         deleteModal.classList.add('hidden');
@@ -168,7 +162,6 @@
                     });
                 });
 
-                // Close on backdrop click
                 deleteModal.addEventListener('click', function(e) {
                     if (e.target === deleteModal) {
                         deleteModal.classList.add('hidden');
@@ -176,7 +169,6 @@
                     }
                 });
 
-                // Close on ESC key
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && !deleteModal.classList.contains('hidden')) {
                         deleteModal.classList.add('hidden');
