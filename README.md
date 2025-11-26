@@ -78,8 +78,6 @@ Proyek ini di-deploy menggunakan Railway:
 
 <hr>
 
-<hr>
-
 <p align="center">
   ⭐ Jangan lupa beri star di repository jika proyek ini bermanfaat!
 </p>
