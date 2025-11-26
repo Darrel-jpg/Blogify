@@ -35,7 +35,7 @@
 
 <hr>
 
-<h2>📦 Instalasi</h2>
+<h2>Instalasi</h2>
 
 <pre>
 <code>
@@ -56,11 +56,11 @@ php artisan serve
 
 <hr>
 
-<h2>🔑 Akun Demo</h2>
+<h2>Akun Demo</h2>
 
 <p><strong>Admin Login</strong></p>
 <ul>
-  <li>Email: <code>admin@example.com</code></li>
+  <li>Username: <code>darrelfaa</code></li>
   <li>Password: <code>password</code></li>
 </ul>
 
@@ -78,16 +78,6 @@ Proyek ini di-deploy menggunakan Railway:
 </p>
 
 <hr>
-
-<h2>📄 Lisensi</h2>
-<p>Proyek ini dirilis sebagai open-source untuk dipelajari dan dikembangkan kembali.</p>
-
-<hr>
-
-<h2>🤝 Kontribusi</h2>
-<p>
-Pull request sangat diterima. Jika ingin menambahkan fitur baru atau meningkatkan performa sistem, silakan ajukan kontribusi.
-</p>
 
 <hr>
 
