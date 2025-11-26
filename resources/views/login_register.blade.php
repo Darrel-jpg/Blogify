@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Register</title> 
-    @vite(['resources/css/login_register.css', 'resources/js/login_register.js'])
+    <link rel="stylesheet" href="/css/login_register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
@@ -58,7 +58,7 @@
     @elseif (session('success'))
         <div id="flash-alert" class="alert-success"> {{ session('success') }} </div>
     @endif
-    <script src="login_register.js"></script>
+    <script src="/js/login_register.js"></script>
 </body>
 
 </html>
