@@ -12,22 +12,21 @@
 
 <hr>
 
-<h2>✨ Fitur Utama</h2>
+<h2>Fitur Utama</h2>
 <ul>
   <li>🔐 <strong>Autentikasi & Role Management</strong></li>
   <li>📝 <strong>CRUD Post</strong> dengan editor yang nyaman</li>
   <li>👤 <strong>Manajemen User Admin</strong> (buat, edit, hapus)</li>
   <li>📸 <strong>Upload dan hapus foto profil</strong> menggunakan Cloudinary</li>
   <li>📱 <strong>Responsive Layout</strong></li>
-  <li>⚡ <strong>Performa cepat</strong>, dibangun dengan Laravel + Vite</li>
 </ul>
 
 <hr>
 
-<h2>🛠️ Teknologi yang Digunakan</h2>
+<h2>Teknologi yang Digunakan</h2>
 <ul>
   <li>Laravel 11</li>
-  <li>MySQL / Railway PostgreSQL (opsional)</li>
+  <li>MySQL)</li>
   <li>TailwindCSS</li>
   <li>Vite</li>
   <li>Cloudinary (image storage)</li>
