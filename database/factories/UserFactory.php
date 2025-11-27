@@ -33,7 +33,6 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'role' => 'user',
-            // 'photo' => 'https://picsum.photos/seed/' . fake()->uuid() . '/500/500',
             'photo' => 'https://i.pravatar.cc/500?u=' . $username,
             'remember_token' => Str::random(10),
         ];

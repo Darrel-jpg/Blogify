@@ -11,8 +11,8 @@ use App\Http\Controllers\AdminUserController;
 
 // Route::get('/', function () {
 //     return view('home');
-
 // });
+
 Route::middleware('guest')->group(function () {
     Route::get('/login-register', [AuthController::class, 'index'])->name('login-register');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');

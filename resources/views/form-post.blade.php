@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="bg-white rounded-lg shadow-md w-full py-8 px-10 mx-auto max-w-2xl">
-        {{-- <h2 class="mb-4 text-xl font-bold text-gray-900">{{ $post ? 'Edit Post' : 'Create New Post' }}</h2> --}}
         <form action="{{ $post ? route('update', $post->id) : route('store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
