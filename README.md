@@ -28,7 +28,6 @@
   <li>Laravel 11</li>
   <li>MySQL)</li>
   <li>TailwindCSS</li>
-  <li>Vite</li>
   <li>Cloudinary (image storage)</li>
 </ul>
 
