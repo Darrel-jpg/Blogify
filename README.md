@@ -17,7 +17,7 @@
   <li>🔐 <strong>Autentikasi & Role Management</strong></li>
   <li>📝 <strong>CRUD Post</strong> dengan editor yang nyaman</li>
   <li>👤 <strong>Manajemen User Admin</strong> (buat, edit, hapus)</li>
-  <li>📸 <strong>Upload dan hapus foto profil</strong> menggunakan Cloudinary</li>
+  <li>📸 <strong>Upload foto profil</strong> menggunakan Cloudinary</li>
   <li>📱 <strong>Responsive Layout</strong></li>
 </ul>
 
