@@ -26,7 +26,7 @@
 <h2>Teknologi yang Digunakan</h2>
 <ul>
   <li>Laravel 11</li>
-  <li>MySQL)</li>
+  <li>MySQL</li>
   <li>TailwindCSS</li>
   <li>Cloudinary (image storage)</li>
 </ul>
